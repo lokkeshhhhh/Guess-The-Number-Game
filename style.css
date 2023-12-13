@@ -117,22 +117,6 @@
             }
 
 
-
-            /* .what-to-do .listsTo{
-            display: none;
-            position: absolute;
-            top: 1%;
-            left: 1%;
-            margin-right: 1%;
-            background-color: rgb(0, 0, 0);
-            color: rgb(255, 255, 255);
-            font-size: 20px;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            max-width: auto;
-            min-height: 450px;
-            padding: 20px;
-        } */
-
             #close-todo {
                 padding: 3px 20px;
 

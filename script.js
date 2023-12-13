@@ -5,14 +5,6 @@ function darkMode() {
     document.body.classList.toggle('darkmode');
 }
 
-// document.getElementById("dark-mode").addEventListener('click', function () {
-//     document.getElementById("dark-mode").innerHTML = "Light Mode";
-// })
-// document.getElementById("dark-mode").addEventListener('click', function () {
-//     document.getElementById("dark-mode").innerHTML = "Dark Mode";
-// })
-
-
 const darkModeButton = document.getElementById("dark-mode");
 let isDarkMode = true;
 
@@ -22,19 +14,9 @@ darkModeButton.addEventListener('click', function () {
     } else {
         darkModeButton.innerHTML = "Dark Mode";
     }
-    isDarkMode = !isDarkMode; // Toggle the isDarkMode variable
+    isDarkMode = !isDarkMode; 
 });
 
-
-
-
-// document.getElementById("lklk").addEventListener('mousedown', function () {
-//     document.getElementById("lklk").style.backgroundColor = "black";
-// })
-
-// document.getElementById("lklk").addEventListener('mouseup', function () {
-//     document.getElementById("lklk").style.backgroundColor = "#013637e7";
-// })
 
 const getBody = document.body.children[4];
 
