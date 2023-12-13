@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="/1  New prectice/profile-pic (28).png">
+    <style>
+        h1 {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: black;
+            text-align: center;
+        }
+
+        table,
+        tr,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            font-size: larger;
+            padding: 15px;
+            color: transparent;
+            margin: 0 auto;
+            margin-top: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            user-select: none;
+        }
+
+        button {
+            cursor: pointer;
+            border: 1px solid black;
+            padding: 6px 15px;
+            color: azure;
+            background-color: #013637e7;
+            margin-top: 20px;
+            margin-right: 15px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            white-space: pre;
+
+        }
+
+        .justifycon {
+            display: flex;
+            justify-content: center;
+        }
+
+        p#seeanswer {
+            font-size: 25px;
+            text-align: center;
+            height: auto;
+        }
+
+        input {
+            padding: 5px;
+            margin-top: 3px;
+            width: 180px;
+
+        }
+
+        .inputs {
+            display: flex;
+            flex-direction: column;
+            justify-self: center;
+            align-items: center;
+        }
+
+        #print-the-answer {
+            text-align: center;
+            font-size: 25px;
+        }
+
+        .seeans {
+            height: 60px;
+        }
+
+        #klkl {
+            pointer-events: none;
+        }
+
+        div.popup .lists {
+            display: none;
+            position: fixed;
+            top: 10%;
+            left: 5%;
+            background-color: rgb(255, 255, 255);
+            color: rgb(2, 49, 57);
+            font-size: 20px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            width: 85%;
+            min-height: 450px;
+            padding: 20px;
+        }
+        .what-to-do .listsTo{
+            display: none;
+            position: fixed;
+            top: 10%;
+            left: 5%;
+            background-color: rgb(255, 255, 255);
+            color: rgb(2, 49, 57);
+            font-size: 20px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            width: 85%;
+            min-height: 450px;
+            padding: 20px;
+        }
+
+        @media screen and (max-width: 380px) {
+            div.popup .lists,.what-to-do .listsTo {
+            display: none;
+            position: absolute;
+            top: 1%;
+            left: 1%;
+            margin-right: 1%;
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            max-width: auto;
+            min-height: 450px;
+            padding: 20px;
+        }
+
+        #close-todo{
+        margin-top: 250px;
+        }
+
+        /* .what-to-do .listsTo{
+            display: none;
+            position: absolute;
+            top: 1%;
+            left: 1%;
+            margin-right: 1%;
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            max-width: auto;
+            min-height: 450px;
+            padding: 20px;
+        } */
+        }
+
+        div.popup .lists h4 {
+            text-align: center;
+        }
+        .what-to-do .listsTo h4{
+            text-align: center;
+        }
+
+        li {
+            line-height: 2;
+            padding: 3px 10px;
+        }
+
+        .openn,.opennTo {
+            display: flex;
+            justify-content: center;
+        }
+
+        .closee, .closeTo {
+            display: flex;
+            justify-content: center;
+        }
+
+        #close-todo,#close-popup{
+            padding: 3px 20px;
+        }
+        
+        #close-popup:hover{
+            background-color: rgb(173, 4, 4);
+        }
+        #close-todo:hover{
+            background-color: rgb(194, 4, 4);
+        }
+
+        .empty {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.811);
+            display: none;
+        }
+
+        .empty.lokesh {
+            display: block;
+            width: 100%;
+        }
+
+        h2 a{
+            text-decoration: none;
+            color: rgb(6, 75, 77);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+        }
+        h2{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="empty" id="emptyy"></div>
+    <h1>Guess The Value Of a Box :</h1>
+
+
+    <div class="what-to-do">
+        <div class="opennTo"><button class="opentodo" id="open-todo" onclick="openTodo()">How To Play</button></div>
+        <div class="listsTo" id="toDodiv">
+            <h4>What To Do :</h4>
+            <ul>
+                <li>There is a square with 16 smaller squares inside.</li>
+                <li>Each smaller square contains a value between 1 to 21.</li>
+                <li>You can guess the value of any square by filling the input fields.</li>
+                <li>You can also reset the values by clicking the "Change Values" button.</li>
+            </ul>
+
+            <div class="closeTo"><button type="button" id="close-todo" class="closeTodo" onclick="closeTodo()">X</button></div>
+        </div>
+    </div>
+
+    <div class="popup">
+        <div class="openn"><button class="openpopup" id="open-popup" onclick="openPopup()">Instructions</button></div>
+
+        <div class="lists" id="popupdiv">
+            <h4>Instructions:</h4>
+            <ul>
+                <li>You have to fill all the inputs first.
+                    <ul>
+                        <li> Fill the number of columns and rows between 1 and 4.</li>
+                        <li> Guess the value between 1 and 21.</li>
+                    </ul>
+                </li>
+                <li>You cannot reveal the answer until you've tried at least once.</li>
+                <li>If you once revealed the answer, you have to change the values; otherwise, you cannot go ahead.</li>
+                <li>If you change the values once, you cannot reveal the answer until you've tried again (repeating).
+                </li>
+            </ul>
+
+            <div class="closee"><button type="button" id="close-popup" class="closepopup"
+                    onclick="closePopup()">X</button></div>
+        </div>
+    </div>
+
+    <table>
+        <tr class="kkk">
+            <td id="lk1">1</td>
+            <td id="lk2">2</td>
+            <td id="lk3">3</td>
+            <td id="lk4">4</td>
+        </tr>
+        <tr>
+            <td id="lk5">5</td>
+            <td id="lk6">6</td>
+            <td id="lk7">7</td>
+            <td id="lk8">8</td>
+        </tr>
+        <tr>
+            <td id="lk9">9</td>
+            <td id="lk10">10</td>
+            <td id="lk11">11</td>
+            <td id="lk12">12</td>
+        </tr>
+        <tr>
+            <td id="lk13">13</td>
+            <td id="lk14">14</td>
+            <td id="lk15">15</td>
+            <td id="lk16">16</td>
+        </tr>
+    </table>
+
+
+    <div class="justifycon">
+        <button onclick="llk()" id="lklk">Change values :</button>
+        <button onclick="lkk()" id="klkl">See answer :</button>
+
+    </div>
+    <div class="seeans">
+        <p id="seeanswer"></p>
+    </div>
+
+
+    <div class="inputs">
+        <label for="row">Enter row :</label>
+        <input type="number" id="rows" name="row" min="1" max="4" required><br>
+        <label for="column">Enter column :</label>
+        <input type="number" id="columns" name="column" min="1" max="4" required><br>
+        <label for="guessthevalue">Guess The value :</label>
+        <input type="number" id="guess-the-value" name="guessthevalue" min="1" max="22" required><br>
+        <button type="submit" id="check" onclick="check()">CHECK</button>
+    </div>
+    <p id="print-the-answer"></p>
+
+
+<br><br><br><br><br>
+
+
+
+
+<h2>Made By <a href="https://www.instagram.com/lokkeshhhhh?utm_source=qr&igshid=YzU1NGVlODEzOA%3D%3D">Lokesh Kumawat</a></h2>
+
+
+
+</body>
+
+<script>
+
+
+
+    document.getElementById("lklk").addEventListener('mousedown', function () {
+        document.getElementById("lklk").style.backgroundColor = "black";
+    })
+
+    document.getElementById("lklk").addEventListener('mouseup', function () {
+        document.getElementById("lklk").style.backgroundColor = "#013637e7";
+    })
+
+    const getBody = document.body.children[4];
+
+    const getEle = getBody.tBodies[0].rows[0];
+
+    getEle.children[0].style.backgroundColor = "#042f45";
+    getEle.children[1].style.backgroundColor = "#45042f";
+    getEle.children[2].style.backgroundColor = "#044539";
+    getEle.children[3].style.backgroundColor = "#210445";
+
+    const getEl = getBody.tBodies[0].rows[1];
+
+    getEl.children[0].style.backgroundColor = "#565640";
+    getEl.children[1].style.backgroundColor = "#454504";
+    getEl.children[2].style.backgroundColor = "#6f420f";
+    getEl.children[3].style.backgroundColor = "#530409";
+
+    const getE = getBody.tBodies[0].rows[3];
+
+    getE.children[0].style.backgroundColor = "#003477";
+    getE.children[1].style.backgroundColor = "#454504";
+    getE.children[2].style.backgroundColor = "#6f420f";
+    getE.children[3].style.backgroundColor = "#530409";
+
+    const geEle = getBody.tBodies[0].rows[2];
+
+    geEle.children[0].style.backgroundColor = "#042f45";
+    geEle.children[1].style.backgroundColor = "#45042f";
+    geEle.children[2].style.backgroundColor = "#044539";
+    geEle.children[3].style.backgroundColor = "#210445";
+
+
+
+
+    function llk() {
+
+
+        document.getElementById("rows").value = "";
+        document.getElementById("columns").value = "";
+        document.getElementById("guess-the-value").value = "";
+
+        document.getElementById("seeanswer").innerHTML = "";
+        document.getElementById("print-the-answer").innerHTML = "";
+
+
+        const getE = getBody.tBodies[0].rows[3];
+        const x = Math.round(Math.random() * 10);
+        const d = Math.round(Math.random() * 10);
+        const c = Math.round(Math.random() * 10);
+        const b = Math.round(Math.random() * 10);
+        const a = Math.round(Math.random() * 10);
+        getE.children[0].style.backgroundColor = "#" + a + b + c + "d" + d + x;
+        getE.children[1].style.backgroundColor = "#" + d + x + c + "e" + a + x;
+        getE.children[2].style.backgroundColor = "#" + c + d + b + "e" + x + a;
+        getE.children[3].style.backgroundColor = "#" + x + d + a + "e" + c + x;
+
+
+        document.getElementById("lk1").innerHTML = x + 11;
+        document.getElementById("lk2").innerHTML = a + 11;
+        document.getElementById("lk3").innerHTML = b + 11;
+        document.getElementById("lk4").innerHTML = d + 11;
+
+
+
+        const getEle = getBody.tBodies[0].rows[2];
+        const p = Math.round(Math.random() * 10);
+        const q = Math.round(Math.random() * 10);
+        const r = Math.round(Math.random() * 10);
+        const s = Math.round(Math.random() * 10);
+        const t = Math.round(Math.random() * 10);
+        getEle.children[0].style.backgroundColor = "#" + p + r + q + "e" + t + s;
+        getEle.children[1].style.backgroundColor = "#" + q + s + p + "e" + r + t;
+        getEle.children[2].style.backgroundColor = "#" + r + s + p + "e" + t + q;
+        getEle.children[3].style.backgroundColor = "#" + t + r + q + "e" + p + s;
+
+
+        document.getElementById("lk5").innerHTML = p + 11;
+        document.getElementById("lk6").innerHTML = s + 11;
+        document.getElementById("lk7").innerHTML = r + 11;
+        document.getElementById("lk8").innerHTML = q + 11;
+
+
+        const getEl = getBody.tBodies[0].rows[1];
+        const k = Math.round(Math.random() * 10);
+        const l = Math.round(Math.random() * 10);
+        const m = Math.round(Math.random() * 10);
+        const n = Math.round(Math.random() * 10);
+        const o = Math.round(Math.random() * 10);
+        getEl.children[0].style.backgroundColor = "#" + o + n + k + "e" + l + m;
+        getEl.children[1].style.backgroundColor = "#" + l + k + m + "e" + o + n;
+        getEl.children[2].style.backgroundColor = "#" + m + o + n + "e" + l + k;
+        getEl.children[3].style.backgroundColor = "#" + n + o + l + "e" + k + m;
+
+        document.getElementById("lk9").innerHTML = k + 11;
+        document.getElementById("lk10").innerHTML = m + 11;
+        document.getElementById("lk11").innerHTML = l + 11;
+        document.getElementById("lk12").innerHTML = o + 11;
+
+        const geEle = getBody.tBodies[0].rows[0];
+        const x1 = Math.round(Math.random() * 10);
+        const d2 = Math.round(Math.random() * 10);
+        const c2 = Math.round(Math.random() * 10);
+        const b2 = Math.round(Math.random() * 10);
+        const a2 = Math.round(Math.random() * 10);
+        geEle.children[0].style.backgroundColor = "#" + a2 + b2 + c2 + "e" + d2 + x1;
+        geEle.children[1].style.backgroundColor = "#" + d2 + x1 + c2 + "e" + a2 + x1;
+        geEle.children[2].style.backgroundColor = "#" + c2 + d2 + b2 + "e" + x1 + a2;
+        geEle.children[3].style.backgroundColor = "#" + x1 + d2 + a2 + "e" + c2 + x1;
+
+
+        document.getElementById("lk13").innerHTML = a2 + 11;
+        document.getElementById("lk14").innerHTML = b2 + 11;
+        document.getElementById("lk15").innerHTML = d2 + 11;
+        document.getElementById("lk16").innerHTML = x1 + 11;
+
+        document.getElementById("klkl").style.pointerEvents = "none";
+
+        document.getElementById("check").style.pointerEvents = "all";
+    }
+
+
+
+
+
+    function check() {
+
+        const rowInput = document.getElementById("rows").value - 1;
+        const columnInput = document.getElementById("columns").value - 1;
+
+        const getBoxv = getBody.tBodies[0].rows[rowInput].children[columnInput].innerHTML;
+
+        const guessedValue = document.getElementById("guess-the-value").value;
+
+
+        if (getBoxv == guessedValue) {
+            document.getElementById("print-the-answer").innerHTML = "You are genius ! ! !";
+        } else {
+            document.getElementById("print-the-answer").innerHTML = "You missed it ! ! !";
+        }
+
+
+        document.getElementById("klkl").style.pointerEvents = "all";
+    }
+
+
+
+    function lkk() {
+
+        const rowInput = document.getElementById("rows").value - 1;
+        const columnInput = document.getElementById("columns").value - 1;
+        const getBoxv = getBody.tBodies[0].rows[rowInput].children[columnInput].innerHTML;
+        document.getElementById("seeanswer").innerHTML = getBoxv;
+
+        document.getElementById("check").style.pointerEvents = "none";
+        document.getElementById("klkl").style.pointerEvents = "none";
+    }
+
+
+    function openPopup() {
+        document.getElementById("popupdiv").style.display = "block";
+        document.getElementById("emptyy").classList.add('lokesh');
+    }
+
+    function closePopup() {
+        document.getElementById("popupdiv").style.display = "none";
+        document.getElementById("emptyy").classList.remove('lokesh');
+    }
+
+    document.getElementById("emptyy").addEventListener('click', function () {
+        document.getElementById("emptyy").classList.remove('lokesh');
+        document.getElementById("popupdiv").style.display = "none";
+        document.getElementById("toDodiv").style.display = "none";
+    });
+
+
+    function openTodo() {
+        document.getElementById("toDodiv").style.display = "block";
+        document.getElementById("emptyy").classList.add('lokesh');
+    }
+
+    function closeTodo() {
+        document.getElementById("toDodiv").style.display = "none";
+        document.getElementById("emptyy").classList.remove('lokesh');
+    }
+</script>
+
+</html>
