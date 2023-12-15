@@ -1,10 +1,4 @@
 
-
-
-function darkMode() {
-    document.body.classList.toggle('darkmode');
-}
-
 const darkModeButton = document.getElementById("dark-mode");
 let isDarkMode = true;
 
@@ -15,6 +9,8 @@ darkModeButton.addEventListener('click', function () {
         darkModeButton.innerHTML = "Dark Mode";
     }
     isDarkMode = !isDarkMode; 
+
+    document.body.classList.toggle('darkmode');
 });
 
 
@@ -50,10 +46,10 @@ geEle.children[3].style.backgroundColor = "#210445";
 
 
 
+document.querySelector("#change-values").addEventListener('click', function(){
+    
 
-function llk() {
-
-    "use strict";
+    // "use strict";
     document.getElementById("rows").value = "";
     document.getElementById("columns").value = "";
     document.getElementById("guess-the-value").value = "";
@@ -132,17 +128,14 @@ function llk() {
     document.getElementById("lk15").innerHTML = d2 + 11;
     document.getElementById("lk16").innerHTML = x1 + 11;
 
-    document.getElementById("klkl").style.pointerEvents = "none";
+    document.getElementById("see-ans").style.pointerEvents = "none";
 
     document.getElementById("check").style.pointerEvents = "all";
-}
+
+})
 
 
-
-
-
-function check() {
-
+document.querySelector("#check").addEventListener('click', function(){
     const rowInput = document.getElementById("rows").value - 1;
     const columnInput = document.getElementById("columns").value - 1;
 
@@ -158,32 +151,32 @@ function check() {
     }
 
 
-    document.getElementById("klkl").style.pointerEvents = "all";
-}
+    document.getElementById("see-ans").style.pointerEvents = "all";
+})
 
 
+document.getElementById("see-ans").style.pointerEvents = "none";
 
-function lkk() {
-
+document.querySelector("#see-ans").addEventListener('click', function(){
     const rowInput = document.getElementById("rows").value - 1;
     const columnInput = document.getElementById("columns").value - 1;
     const getBoxv = getBody.tBodies[0].rows[rowInput].children[columnInput].innerHTML;
     document.getElementById("seeanswer").innerHTML = getBoxv;
 
     document.getElementById("check").style.pointerEvents = "none";
-    document.getElementById("klkl").style.pointerEvents = "none";
-}
+    document.getElementById("see-ans").style.pointerEvents = "none";
+})
 
 
-function openPopup() {
+document.querySelector("#open-popup").addEventListener('click', function(){
     document.getElementById("popupdiv").style.display = "block";
     document.getElementById("emptyy").classList.add('lokesh');
-}
+})
 
-function closePopup() {
+document.querySelector("#close-popup").addEventListener('click', function(){
     document.getElementById("popupdiv").style.display = "none";
     document.getElementById("emptyy").classList.remove('lokesh');
-}
+})
 
 document.getElementById("emptyy").addEventListener('click', function () {
     document.getElementById("emptyy").classList.remove('lokesh');
@@ -191,13 +184,12 @@ document.getElementById("emptyy").addEventListener('click', function () {
     document.getElementById("toDodiv").style.display = "none";
 });
 
-
-function openTodo() {
+document.querySelector("#open-todo").addEventListener('click', function(){
     document.getElementById("toDodiv").style.display = "block";
     document.getElementById("emptyy").classList.add('lokesh');
-}
+})
 
-function closeTodo() {
+document.querySelector("#close-todo").addEventListener('click', function(){
     document.getElementById("toDodiv").style.display = "none";
     document.getElementById("emptyy").classList.remove('lokesh');
-}
+})
