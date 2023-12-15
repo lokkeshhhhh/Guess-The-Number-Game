@@ -7,6 +7,7 @@ for (let i = 0; i < getTable.rows.length; i++) {
 
     for (let j = 0; j < getRows.children.length; j++) {
         getRows.children[j].style.backgroundColor = "#" + getRows.children[j].className;
+        getRows.children[j].innerHTML = Math.round(Math.random() * 10) + 11;
     }
 }
 
