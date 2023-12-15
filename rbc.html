@@ -6,7 +6,256 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guess The Value</title>
     <!-- <link rel="icon" href="/1  New prectice/profile-pic (28).png"> -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        
+        h1 {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: black;
+            text-align: center;
+        }
+
+        table,
+        tr,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            font-size: larger;
+            padding: 15px;
+            color: transparent;
+            margin: 0 auto;
+            margin-top: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            user-select: none;
+        }
+
+        button {
+            cursor: pointer;
+            border: 1px solid black;
+            padding: 6px 15px;
+            color: azure;
+            background-color: #013637e7;
+            margin-top: 20px;
+            margin-right: 15px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            white-space: pre;
+
+        }
+
+        .justifycon {
+            display: flex;
+            justify-content: center;
+        }
+
+        p#seeanswer {
+            font-size: 25px;
+            text-align: center;
+            height: auto;
+        }
+
+        input {
+            padding: 5px;
+            margin-top: 3px;
+            width: 180px;
+
+        }
+
+        .inputs {
+            display: flex;
+            flex-direction: column;
+            justify-self: center;
+            align-items: center;
+        }
+
+        #print-the-answer {
+            text-align: center;
+            font-size: 25px;
+        }
+
+        .seeans {
+            height: 60px;
+        }
+
+        #klkl {
+            pointer-events: none;
+        }
+
+        div.popup .lists {
+            display: none;
+            position: fixed;
+            top: 10%;
+            left: 5%;
+            background-color: rgb(255, 255, 255);
+            color: rgb(2, 49, 57);
+            font-size: 20px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            width: 85%;
+            min-height: 450px;
+            padding: 20px;
+        }
+
+        .what-to-do .listsTo {
+            display: none;
+            position: fixed;
+            top: 10%;
+            left: 5%;
+            background-color: rgb(255, 255, 255);
+            color: rgb(2, 49, 57);
+            font-size: 20px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            width: 85%;
+            min-height: 450px;
+            padding: 20px;
+        }
+
+        @media screen and (max-width: 380px) {
+
+            div.popup .lists,
+            .what-to-do .listsTo {
+                display: none;
+                position: absolute;
+                top: 1%;
+                left: 1%;
+                margin-right: 1%;
+                background-color: rgb(255, 255, 255);
+                color: rgb(0, 0, 0);
+                font-size: 20px;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                max-width: auto;
+                height: 1100px;
+                padding: 20px;
+            }
+
+
+            #close-todo {
+                padding: 3px 20px;
+
+                margin-top: 450px;
+
+            }
+
+            #close-popup {
+                margin-top: 150px;
+            }
+        }
+
+        div.popup .lists h4 {
+            text-align: center;
+        }
+
+        .what-to-do .listsTo h4 {
+            text-align: center;
+        }
+
+        li {
+            line-height: 2;
+            padding: 3px 10px;
+        }
+
+        .openn,
+        .opennTo {
+            display: flex;
+            justify-content: center;
+        }
+
+        .closee,
+        .closeTo {
+            display: flex;
+            justify-content: center;
+        }
+
+        #close-todo {
+            padding: 3px 20px;
+
+            margin-top: 80px;
+
+        }
+
+        #close-popup {
+            margin-top: 80px;
+        }
+
+        #close-popup:hover {
+            background-color: rgb(173, 4, 4);
+        }
+
+        #close-todo:hover {
+            background-color: rgb(194, 4, 4);
+        }
+
+        .empty {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.811);
+            display: none;
+        }
+
+        .empty.lokesh {
+            display: block;
+            width: 100%;
+        }
+
+        h2 a {
+            text-decoration: none;
+            color: rgb(6, 75, 77);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .darkmode {
+            background-color: rgba(0, 0, 0, 0.916);
+            color: rgba(151, 151, 151, 0.97);
+        }
+
+        .darkmode h1 {
+            color: rgba(151, 151, 151, 0.97);
+        }
+
+        .darkmode a {
+            color: antiquewhite;
+        }
+
+        .darkmode .popup .lists,
+        .darkmode .what-to-do .listsTo {
+            background-color: black;
+            color: rgba(151, 151, 151, 0.97);
+            z-index: 1;
+        }
+
+        .darkmode input {
+            background-color: black;
+            border: 1px solid rgba(151, 151, 151, 0.97);
+            /* padding: 10px 15px; */
+            color: rgba(151, 151, 151, 0.97);
+        }
+
+        .darkmode button {
+            background-color: rgb(11, 0, 7);
+            color: rgba(151, 151, 151, 0.97);
+            border: 1px solid rgba(151, 151, 151, 0.97);
+        }
+
+        .darkmode table,
+        .darkmode tr,
+        .darkmode td {
+            border: 1px solid rgba(151, 151, 151, 0.97);
+        }
+
+        .darkmode button:focus {
+            background-color: black;
+
+        }
+
+        .darkmode table {
+            opacity: 0.5;
+            z-index: -1;
+        }
+    </style>
 </head>
 
 <body>
