@@ -6,13 +6,16 @@ const getTable = document.querySelector("#main-game-table");
 
 for (let i = 0; i < getTable.rows.length; i++) {
     const getRows = getTable.rows[i];
+
     for (let j = 0; j < getRows.children.length; j++) {
         getRows.children[j].style.backgroundColor = "#" + getRows.children[j].className;
+
         getRows.children[j].innerHTML = Math.round(Math.random() * 10) + 11;
     }
 }
 
 document.querySelector("#change-values").addEventListener('click', function () {
+
     document.getElementById("rows").value = "";
     document.getElementById("columns").value = "";
     document.getElementById("guess-the-value").value = "";
@@ -21,12 +24,15 @@ document.querySelector("#change-values").addEventListener('click', function () {
     document.getElementById("print-the-answer").innerHTML = "";
 
 
+    
+
     for (let j = 0; j < getTable.rows.length; j++) {
+
         for (let i = 0; i < getTable.rows[j].children.length; i++) {
             let color = '#';
             let hexes = '0123456789ABCDEF';
             let numValue;
-            
+
             for (let i = 0; i < 6; i++) {
                 color += hexes[Math.round(Math.random() * 15)]
                 numValue = Math.round(Math.random() * 10);
@@ -34,6 +40,7 @@ document.querySelector("#change-values").addEventListener('click', function () {
 
             getTable.rows[j].children[i].style.backgroundColor = color;
             getTable.rows[j].children[i].innerHTML = numValue + 11;
+
         }
     }
 
@@ -134,110 +141,3 @@ darkModeButton.addEventListener('click', function () {
 
     document.body.classList.toggle('darkmode');
 });
-
-
-
-
-
-
-
-
-
-
-// let me know if there can be any code improvement
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let me know if there can be any code improvement
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let me know if there can be any code improvement
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // let me know if there can be any code improvement
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let me know if there can be any code improvement
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// END
